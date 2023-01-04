@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_brightness_cubit.dart';
-import 'package:portfolio/widgets/about_me.dart';
+import 'package:portfolio/util.dart';
+import 'package:portfolio/widgets/about_me/about_me.dart';
 import 'package:portfolio/widgets/contact_me.dart';
 import 'package:portfolio/widgets/experiences.dart';
 import 'package:portfolio/widgets/skills.dart';
@@ -20,9 +21,16 @@ class Dashboard extends StatelessWidget {
           return Row(
             children: [
               NavigationRail(
-                leading: IconButton(
-                  onPressed: () => _revertBrightness(context),
-                  icon: const Icon(Icons.sunny),
+                leading: BlocConsumer<ThemeBrightnessCubit, bool>(
+                  listener: (context, isDark) => writeDarkMode(isDark),
+                  builder: (context, isDark) {
+                    return IconButton(
+                      onPressed: () => _revertBrightness(context),
+                      icon: Icon(
+                        isDark ? Icons.light_mode : Icons.mode_night,
+                      ),
+                    );
+                  },
                 ),
                 groupAlignment: 0,
                 destinations: const [

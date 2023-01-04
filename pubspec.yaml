@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.5
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
+  auto_size_text: ^3.0.0
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:
