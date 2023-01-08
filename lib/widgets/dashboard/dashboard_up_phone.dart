@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_brightness_cubit.dart';
-import 'package:portfolio/util.dart';
-import 'package:portfolio/widgets/about_me/about_me.dart';
-import 'package:portfolio/widgets/contact_me.dart';
-import 'package:portfolio/widgets/experiences.dart';
-import 'package:portfolio/widgets/skills.dart';
+import 'package:portfolio/util/util.dart';
 
-const _screens = [AboutMe(), Skills(), Experiences(), ContactMe()];
+class DashboardUpPhone extends StatelessWidget {
+  const DashboardUpPhone({
+    Key? key,
+    required this.screens,
+  }) : super(key: key);
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  final List<Widget> screens;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class Dashboard extends StatelessWidget {
                 onDestinationSelected: (screenIndex) =>
                     _setScreen(context, screenIndex),
               ),
-              Expanded(child: _screens[screenIndex]),
+              Expanded(child: screens[screenIndex]),
             ],
           );
         },
