@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_brightness_cubit.dart';
 import 'package:portfolio/styles/theme.dart';
-import 'package:portfolio/util.dart';
-import 'package:portfolio/widgets/dashboard.dart';
+import 'package:portfolio/util/util.dart';
+import 'package:portfolio/widgets/dashboard/dashboard.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {

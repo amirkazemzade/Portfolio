@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.5
   auto_size_text: ^3.0.0
   sizer: ^2.0.15
+  hovering: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -64,8 +65,22 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/profile-image.jpg
+    - images/200px/kotlin-logo.png
+    - images/200px/android-logo.png
+    - images/200px/flutter-logo.png
+    - images/200px/agile-logo.png
+    - images/200px/github-actions-logo.png
+    - images/200px/jetpack-compose-logo.png
+    - images/200px/kmm-logo.png
+    - images/200px/responsive-logo.png
+    - images/200px/socket-logo.png
+    - images/200px/sql-logo.png
+    - images/200px/github-logo-white.png
+    - images/200px/github-logo-black.png
+    - images/200px/material-design-logo.png
+    - images/200px/compose-multiplatform-logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

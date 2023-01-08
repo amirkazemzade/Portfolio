@@ -12,3 +12,16 @@ extension ScreenBreakPointsExtension on ScreenBreakPoints {
     return widthValues[this]!;
   }
 }
+
+ScreenBreakPoints getScreenSize(double width) {
+  if (width <= ScreenBreakPoints.phone.width) {
+    return ScreenBreakPoints.phone;
+  }
+  if (width <= ScreenBreakPoints.tablet.width) {
+    return ScreenBreakPoints.tablet;
+  }
+  if (width <= ScreenBreakPoints.laptop.width) {
+    return ScreenBreakPoints.laptop;
+  }
+  return ScreenBreakPoints.desktop;
+}

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class CircleImage extends StatelessWidget {
   const CircleImage({
     Key? key,
-    required this.url,
+    required this.path,
   }) : super(key: key);
 
-  final String url;
+  final String path;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(100)),
-      child: Image.network(url),
+      child: Image.asset(path),
     );
   }
 }

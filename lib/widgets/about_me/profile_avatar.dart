@@ -23,7 +23,7 @@ class ProfileAvatar extends StatelessWidget {
         stackCount: 3,
         child: const Padding(
           padding: padding8,
-          child: CircleImage(url: profileImageUrl),
+          child: CircleImage(path: profileImagePath),
         ),
       ),
     );

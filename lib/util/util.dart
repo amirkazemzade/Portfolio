@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 bool readDarkMode() {
   // final cookie = document.cookie!;
@@ -12,5 +12,5 @@ bool readDarkMode() {
 }
 
 void writeDarkMode(bool isDark) {
-  document.cookie = "is_dark=$isDark";
+  // document.cookie = "is_dark=$isDark";
 }

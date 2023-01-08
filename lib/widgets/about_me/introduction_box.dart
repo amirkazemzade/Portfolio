@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/screen_break_points.dart';
+import 'package:portfolio/util/screen_break_points.dart';
 import 'package:portfolio/widgets/about_me/horizontal_introduction_box.dart';
 import 'package:portfolio/widgets/about_me/vertical_introduction_box.dart';
 
