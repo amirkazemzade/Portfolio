@@ -41,6 +41,7 @@ dependencies:
   auto_size_text: ^3.0.0
   sizer: ^2.0.15
   hovering: ^1.0.4
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,9 @@ flutter:
     - images/200px/github-logo-black.png
     - images/200px/material-design-logo.png
     - images/200px/compose-multiplatform-logo.png
+    - images/200px/ryca-logo.jpg
+    - images/48px/github-icon-black.png
+    - images/48px/github-icon-white.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

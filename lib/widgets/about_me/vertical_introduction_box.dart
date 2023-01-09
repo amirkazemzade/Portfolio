@@ -11,7 +11,6 @@ class VerticalIntroductionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         ProfileAvatar(),
         SizedBox(height: 16),

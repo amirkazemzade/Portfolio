@@ -19,18 +19,21 @@ class ContentDownLaptop extends StatelessWidget {
       final introductionBox = biggerThanPhone
           ? const HorizontalIntroductionBox()
           : const VerticalIntroductionBox();
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          introductionBox,
-          Divider(height: biggerThanPhone ? 64 : 32, thickness: 8),
-          Padding(
-            padding: biggerThanPhone ? paddingH16 : paddingH8,
-            child: AboutMeDescription(
-              textSize: biggerThanPhone ? 8.sp : 10.sp,
-            ),
-          )
-        ],
+      return Padding(
+        padding: biggerThanPhone ? padding32 : padding16,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            introductionBox,
+            Divider(height: biggerThanPhone ? 64 : 32, thickness: 8),
+            Padding(
+              padding: biggerThanPhone ? paddingH16 : paddingH8,
+              child: AboutMeDescription(
+                textSize: biggerThanPhone ? 8.sp : 12.sp,
+              ),
+            )
+          ],
+        ),
       );
     });
   }

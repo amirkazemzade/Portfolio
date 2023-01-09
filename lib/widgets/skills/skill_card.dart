@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hovering/hovering.dart';
 import 'package:portfolio/styles/dimensions.dart';
 import 'package:portfolio/util/screen_break_points.dart';
-import 'package:portfolio/widgets/skills/skill.dart';
 import 'package:portfolio/widgets/skills/skill_card_phone.dart';
 import 'package:portfolio/widgets/skills/skill_card_tablet.dart';
 import 'package:portfolio/widgets/skills/skill_card_up_tablet.dart';
+import 'package:portfolio/widgets/skills/skill_model.dart';
 
 class SkillCard extends StatelessWidget {
   const SkillCard({
@@ -13,14 +13,14 @@ class SkillCard extends StatelessWidget {
     required this.skill,
   }) : super(key: key);
 
-  final Skill skill;
+  final SkillModel skill;
 
   @override
   Widget build(BuildContext context) {
     return HoverWidget(
       onHover: (event) {},
       hoverChild: Transform.scale(
-        scale: 1.1,
+        scale: 1,
         child: Card(
           elevation: 10,
           child: Padding(
@@ -42,7 +42,7 @@ class SkillCardContent extends StatelessWidget {
     required this.skill,
   }) : super(key: key);
 
-  final Skill skill;
+  final SkillModel skill;
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +50,12 @@ class SkillCardContent extends StatelessWidget {
       padding: padding8,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth <= ScreenBreakPoints.phone.width) {
+          if (MediaQuery.of(context).size.width <=
+              ScreenBreakPoints.phone.width) {
             return SkillCardPhone(skill: skill);
           }
-          if (constraints.maxWidth <= ScreenBreakPoints.tablet.width) {
+          if (MediaQuery.of(context).size.width <=
+              ScreenBreakPoints.tablet.width) {
             return SkillCardTablet(skill: skill);
           }
           return SkillCardUpTablet(skill: skill);

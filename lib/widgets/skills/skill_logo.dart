@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/skills/skill.dart';
+import 'package:portfolio/widgets/skills/skill_model.dart';
 
 class SkillLogo extends StatelessWidget {
   const SkillLogo({
@@ -7,7 +7,7 @@ class SkillLogo extends StatelessWidget {
     required this.skill,
   }) : super(key: key);
 
-  final Skill skill;
+  final SkillModel skill;
 
   @override
   Widget build(BuildContext context) {

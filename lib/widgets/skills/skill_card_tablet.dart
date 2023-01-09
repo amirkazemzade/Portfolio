@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/styles/dimensions.dart';
-import 'package:portfolio/widgets/skills/skill.dart';
 import 'package:portfolio/widgets/skills/skill_logo.dart';
+import 'package:portfolio/widgets/skills/skill_model.dart';
 
 class SkillCardTablet extends StatelessWidget {
   const SkillCardTablet({
@@ -9,7 +9,7 @@ class SkillCardTablet extends StatelessWidget {
     required this.skill,
   }) : super(key: key);
 
-  final Skill skill;
+  final SkillModel skill;
 
   @override
   Widget build(BuildContext context) {

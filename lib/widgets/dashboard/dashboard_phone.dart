@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_brightness_cubit.dart';
+import 'package:portfolio/widgets/dashboard/screen_model.dart';
 
 class DashboardPhone extends StatelessWidget {
   const DashboardPhone({
@@ -9,7 +10,7 @@ class DashboardPhone extends StatelessWidget {
     required this.screens,
   }) : super(key: key);
 
-  final List<Widget> screens;
+  final List<ScreenModel> screens;
 
   @override
   Widget build(BuildContext context) {
@@ -26,31 +27,25 @@ class DashboardPhone extends StatelessWidget {
           ),
           bottomNavigationBar: NavigationBar(
             selectedIndex: screenIndex,
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.person),
-                label: 'About',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.emoji_objects_outlined),
-                label: 'Skills',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.work_outline),
-                label: 'Work',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.alternate_email),
-                label: 'Contact',
-              ),
-            ],
+            destinations: _destinations(),
             onDestinationSelected: (screenIndex) =>
                 _setScreen(context, screenIndex),
           ),
-          body: screens[screenIndex],
+          body: screens[screenIndex].widget,
         );
       },
     );
+  }
+
+  List<NavigationDestination> _destinations() {
+    return screens.map(
+      (screen) {
+        return NavigationDestination(
+          icon: Icon(screen.icon),
+          label: screen.name,
+        );
+      },
+    ).toList();
   }
 
   void _setScreen(BuildContext context, int screenIndex) {
