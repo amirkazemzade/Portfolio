@@ -85,6 +85,8 @@ flutter:
     - images/200px/ryca-logo.jpg
     - images/48px/github-icon-black.png
     - images/48px/github-icon-white.png
+    - images/200px/linked-in-logo.png
+    - images/200px/gmail-logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

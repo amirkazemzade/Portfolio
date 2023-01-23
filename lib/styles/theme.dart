@@ -10,7 +10,7 @@ final redLightTheme = ThemeData(
 final greenLightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
-  colorSchemeSeed: darkGreenColor,
+  colorSchemeSeed: Colors.purpleAccent,
 );
 final blueLightTheme = ThemeData(
   brightness: Brightness.light,
@@ -32,7 +32,7 @@ final redDarkTheme = ThemeData(
 final greenDarkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
-  colorSchemeSeed: limeColor,
+  colorSchemeSeed: Colors.deepPurple,
 );
 final blueDarkTheme = ThemeData(
   brightness: Brightness.dark,

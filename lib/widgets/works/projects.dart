@@ -87,6 +87,7 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: _projectCards(),
     );
   }
