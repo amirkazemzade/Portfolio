@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
-import 'package:portfolio/logic/theme_brightness_cubit.dart';
-import 'package:portfolio/util/util.dart';
+import 'package:portfolio/logic/theme_storage_cubit.dart';
 import 'package:portfolio/widgets/dashboard/screen_model.dart';
+import 'package:portfolio/widgets/failure_widget.dart';
 
 class DashboardUpPhone extends StatelessWidget {
   const DashboardUpPhone({
@@ -16,34 +16,65 @@ class DashboardUpPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<SelectedScreenCubit, int>(
-        builder: (context, screenIndex) {
-          return Row(
-            children: [
-              NavigationRail(
-                leading: BlocConsumer<ThemeBrightnessCubit, bool>(
-                  listener: (context, isDark) => writeDarkMode(isDark),
-                  builder: (context, isDark) {
-                    return IconButton(
-                      onPressed: () => _revertBrightness(context),
-                      icon: Icon(
-                        isDark ? Icons.light_mode : Icons.mode_night,
-                      ),
-                    );
-                  },
-                ),
-                groupAlignment: 0,
-                destinations: _destinations(),
-                labelType: NavigationRailLabelType.all,
-                selectedIndex: screenIndex,
-                onDestinationSelected: (screenIndex) =>
-                    _setScreen(context, screenIndex),
+      body: BlocBuilder<ThemeStorageCubit, ThemeStorageState>(
+        builder: (context, state) {
+          if (state is ThemeStorageFailure) {
+            return Center(
+              child: FailureWidget(
+                errorMessage: state.error,
+                onPressed: () {
+                  context.read<ThemeStorageCubit>().fetchThemeBrightness();
+                },
               ),
-              Expanded(child: screens[screenIndex].widget),
-            ],
-          );
+            );
+          }
+          if (state is ThemeStorageCubit) {
+            return Stack(
+              children: [
+                _body(),
+                const LinearProgressIndicator(),
+              ],
+            );
+          }
+          return _body();
         },
       ),
+    );
+  }
+
+  BlocBuilder<SelectedScreenCubit, int> _body() {
+    return BlocBuilder<SelectedScreenCubit, int>(
+      builder: (context, screenIndex) {
+        return Row(
+          children: [
+            NavigationRail(
+              leading: _themeSwitchButton(),
+              groupAlignment: 0,
+              destinations: _destinations(),
+              labelType: NavigationRailLabelType.all,
+              selectedIndex: screenIndex,
+              onDestinationSelected: (screenIndex) =>
+                  _setScreen(context, screenIndex),
+            ),
+            Expanded(child: screens[screenIndex].widget),
+          ],
+        );
+      },
+    );
+  }
+
+  BlocBuilder<ThemeStorageCubit, ThemeStorageState> _themeSwitchButton() {
+    return BlocBuilder<ThemeStorageCubit, ThemeStorageState>(
+      builder: (context, state) {
+        bool isDark = false;
+        if (state is ThemeStorageSuccess) isDark = state.isDark ?? false;
+        return IconButton(
+          onPressed: () => _revertBrightness(context, isDark),
+          icon: Icon(
+            isDark ? Icons.light_mode : Icons.mode_night,
+          ),
+        );
+      },
     );
   }
 
@@ -62,7 +93,7 @@ class DashboardUpPhone extends StatelessWidget {
     context.read<SelectedScreenCubit>().setScreen(screenIndex);
   }
 
-  void _revertBrightness(BuildContext context) {
-    context.read<ThemeBrightnessCubit>().revertBrightness();
+  void _revertBrightness(BuildContext context, bool isDark) {
+    context.read<ThemeStorageCubit>().setThemeBrightness(!isDark);
   }
 }

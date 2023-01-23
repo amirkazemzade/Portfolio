@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
-import 'package:portfolio/logic/theme_brightness_cubit.dart';
+import 'package:portfolio/logic/theme_storage_cubit.dart';
 import 'package:portfolio/styles/theme.dart';
-import 'package:portfolio/util/util.dart';
 import 'package:portfolio/widgets/dashboard/dashboard.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,25 +20,29 @@ class MyApp extends StatelessWidget {
         BlocProvider<SelectedScreenCubit>(
           create: (context) => SelectedScreenCubit(),
         ),
-        BlocProvider<ThemeBrightnessCubit>(
-          create: (context) => ThemeBrightnessCubit(readDarkMode()),
+        BlocProvider<ThemeStorageCubit>(
+          create: (context) => ThemeStorageCubit()..fetchThemeBrightness(),
         ),
       ],
-      child: BlocBuilder<ThemeBrightnessCubit, bool>(
-        builder: (context, isDark) {
-          return BlocBuilder<SelectedScreenCubit, int>(
-            builder: (context, screenIndex) {
-              return Sizer(
-                builder: (context, orientation, deviceType) {
-                  return MaterialApp(
-                    title: 'Amir\'s Portfolio',
-                    home: DynamicTheme(
+      child: BlocBuilder<SelectedScreenCubit, int>(
+        builder: (context, screenIndex) {
+          return Sizer(
+            builder: (context, orientation, deviceType) {
+              return MaterialApp(
+                title: 'Amir\'s Portfolio',
+                home: BlocBuilder<ThemeStorageCubit, ThemeStorageState>(
+                  builder: (context, state) {
+                    bool isDark = false;
+                    if (state is ThemeStorageSuccess) {
+                      isDark = state.isDark ?? false;
+                    }
+                    return DynamicTheme(
                       isDark: isDark,
                       themeIndex: screenIndex,
                       child: const Dashboard(),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               );
             },
           );
