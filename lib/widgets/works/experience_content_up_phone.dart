@@ -62,7 +62,7 @@ class ExperienceContentUpPhone extends StatelessWidget {
                             Chip(
                               label: Text(
                                 skill,
-                                style: textTheme.subtitle2,
+                                style: textTheme.titleSmall,
                               ),
                               visualDensity: VisualDensity.compact,
                             ),

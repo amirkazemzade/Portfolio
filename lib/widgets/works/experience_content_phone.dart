@@ -53,7 +53,7 @@ class ExperienceContentPhone extends StatelessWidget {
                       Chip(
                         label: Text(
                           skill,
-                          style: textTheme.caption,
+                          style: textTheme.bodySmall,
                         ),
                         visualDensity: VisualDensity.compact,
                       ),

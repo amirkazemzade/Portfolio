@@ -9,9 +9,9 @@ class HorizontalIntroductionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         Expanded(child: ProfileAvatar()),
         SizedBox(width: 32),
         Expanded(

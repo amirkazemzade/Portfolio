@@ -43,7 +43,7 @@ class ProjectContentUpPhone extends StatelessWidget {
                         backgroundColor: theme.colorScheme.secondary,
                         label: Text(
                           project.language,
-                          style: textTheme.subtitle2?.copyWith(
+                          style: textTheme.titleSmall?.copyWith(
                             color: theme.colorScheme.onSecondary,
                           ),
                         ),
@@ -54,7 +54,7 @@ class ProjectContentUpPhone extends StatelessWidget {
                         backgroundColor: theme.colorScheme.secondary,
                         label: Text(
                           project.framework,
-                          style: textTheme.subtitle2?.copyWith(
+                          style: textTheme.titleSmall?.copyWith(
                             color: theme.colorScheme.onSecondary,
                           ),
                         ),
@@ -71,7 +71,7 @@ class ProjectContentUpPhone extends StatelessWidget {
                               Chip(
                                 label: Text(
                                   platform,
-                                  style: textTheme.subtitle2,
+                                  style: textTheme.titleSmall,
                                 ),
                                 visualDensity: VisualDensity.compact,
                               ),
@@ -86,7 +86,7 @@ class ProjectContentUpPhone extends StatelessWidget {
                       Expanded(
                         child: Text(
                           project.description,
-                          style: textTheme.subtitle2,
+                          style: textTheme.titleSmall,
                         ),
                       ),
                       sizedBoxW16,

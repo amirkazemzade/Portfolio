@@ -8,11 +8,11 @@ class WorksUpTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: padding64,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Expanded(child: ExperiencesBox()),
           sizedBoxW16,
           Expanded(child: ProjectsBox()),

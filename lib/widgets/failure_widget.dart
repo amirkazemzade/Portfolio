@@ -18,7 +18,7 @@ class FailureWidget extends StatelessWidget {
           children: [
             Text(
               errorMessage,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             sizedBoxH16,
             ElevatedButton(

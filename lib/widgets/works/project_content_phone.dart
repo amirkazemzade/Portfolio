@@ -46,7 +46,7 @@ class ProjectContentPhone extends StatelessWidget {
                               backgroundColor: theme.colorScheme.secondary,
                               label: Text(
                                 project.language,
-                                style: textTheme.subtitle2?.copyWith(
+                                style: textTheme.titleSmall?.copyWith(
                                   color: theme.colorScheme.onSecondary,
                                 ),
                               ),
@@ -56,7 +56,7 @@ class ProjectContentPhone extends StatelessWidget {
                               backgroundColor: theme.colorScheme.secondary,
                               label: Text(
                                 project.framework,
-                                style: textTheme.subtitle2?.copyWith(
+                                style: textTheme.titleSmall?.copyWith(
                                   color: theme.colorScheme.onSecondary,
                                 ),
                               ),
@@ -66,7 +66,7 @@ class ProjectContentPhone extends StatelessWidget {
                               Chip(
                                 label: Text(
                                   platform,
-                                  style: textTheme.subtitle2,
+                                  style: textTheme.titleSmall,
                                 ),
                                 visualDensity: VisualDensity.compact,
                               ),
@@ -81,7 +81,7 @@ class ProjectContentPhone extends StatelessWidget {
                       Expanded(
                           child: Text(
                         project.description,
-                        style: textTheme.subtitle2,
+                        style: textTheme.titleSmall,
                       )),
                     ],
                   ),
