@@ -20,7 +20,7 @@ class SkillCard extends StatelessWidget {
     return HoverWidget(
       onHover: (event) {},
       hoverChild: Transform.scale(
-        scale: 1,
+        scale: 1.03,
         child: Card(
           elevation: 10,
           child: Padding(
@@ -29,8 +29,11 @@ class SkillCard extends StatelessWidget {
           ),
         ),
       ),
-      child: Card(
-        child: SkillCardContent(skill: skill),
+      child: Padding(
+        padding: padding4,
+        child: Card(
+          child: SkillCardContent(skill: skill),
+        ),
       ),
     );
   }
