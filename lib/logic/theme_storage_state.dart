@@ -16,13 +16,25 @@ class ThemeStorageLoading extends ThemeStorageState {
 
 class ThemeStorageSuccess extends ThemeStorageState {
   final bool? isDark;
+  final int? seedColor;
 
   const ThemeStorageSuccess({
     required this.isDark,
+    required this.seedColor,
   });
 
+  ThemeStorageSuccess copyWith({
+    bool? isDark,
+    int? seedColor,
+  }) {
+    return ThemeStorageSuccess(
+      isDark: isDark ?? this.isDark,
+      seedColor: seedColor ?? this.seedColor,
+    );
+  }
+
   @override
-  List<Object?> get props => [isDark];
+  List<Object?> get props => [isDark, seedColor];
 }
 
 class ThemeStorageFailure extends ThemeStorageState {

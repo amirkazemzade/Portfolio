@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_storage_cubit.dart';
+import 'package:portfolio/styles/colors.dart';
 import 'package:portfolio/widgets/dashboard/screen_model.dart';
+import 'package:portfolio/widgets/dashboard/theme_brightness_icon_button.dart';
+import 'package:portfolio/widgets/dashboard/theme_seed_color_picker.dart';
 import 'package:portfolio/widgets/failure_widget.dart';
 
 class DashboardUpPhone extends StatelessWidget {
@@ -22,9 +25,7 @@ class DashboardUpPhone extends StatelessWidget {
             return Center(
               child: FailureWidget(
                 errorMessage: state.error,
-                onPressed: () {
-                  context.read<ThemeStorageCubit>().fetchThemeBrightness();
-                },
+                onPressed: () => _fetchThemeData(context),
               ),
             );
           }
@@ -67,12 +68,22 @@ class DashboardUpPhone extends StatelessWidget {
     return BlocBuilder<ThemeStorageCubit, ThemeStorageState>(
       builder: (context, state) {
         bool isDark = false;
-        if (state is ThemeStorageSuccess) isDark = state.isDark ?? false;
-        return IconButton(
-          onPressed: () => _revertBrightness(context, isDark),
-          icon: Icon(
-            isDark ? Icons.light_mode : Icons.mode_night,
-          ),
+        Color seedColor = roseColor;
+
+        if (state is ThemeStorageSuccess && state.isDark != null) {
+          isDark = state.isDark!;
+        }
+        if (state is ThemeStorageSuccess && state.seedColor != null) {
+          seedColor = Color(state.seedColor!);
+        }
+        return Column(
+          children: [
+            ThemeBrightnessIconButton(isDark: isDark),
+            ThemeSeedColorPicker(
+              seedColor: seedColor,
+              isDark: isDark,
+            ),
+          ],
         );
       },
     );
@@ -89,11 +100,9 @@ class DashboardUpPhone extends StatelessWidget {
     ).toList();
   }
 
-  void _setScreen(BuildContext context, int screenIndex) {
-    context.read<SelectedScreenCubit>().setScreen(screenIndex);
-  }
+  void _fetchThemeData(BuildContext context) =>
+      context.read<ThemeStorageCubit>().fetchThemeData();
 
-  void _revertBrightness(BuildContext context, bool isDark) {
-    context.read<ThemeStorageCubit>().setThemeBrightness(!isDark);
-  }
+  void _setScreen(BuildContext context, int screenIndex) =>
+      context.read<SelectedScreenCubit>().setScreen(screenIndex);
 }

@@ -29,7 +29,7 @@ class DashboardPhone extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<ThemeStorageCubit>()
-                            .fetchThemeBrightness();
+                            .fetchThemeData();
                       },
                     ),
                   );

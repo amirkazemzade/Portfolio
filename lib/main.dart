@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/logic/selected_screen_cubit.dart';
 import 'package:portfolio/logic/theme_storage_cubit.dart';
+import 'package:portfolio/styles/colors.dart';
 import 'package:portfolio/styles/theme.dart';
 import 'package:portfolio/widgets/dashboard/dashboard.dart';
 import 'package:sizer/sizer.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           create: (context) => SelectedScreenCubit(),
         ),
         BlocProvider<ThemeStorageCubit>(
-          create: (context) => ThemeStorageCubit()..fetchThemeBrightness(),
+          create: (context) => ThemeStorageCubit()..fetchThemeData(),
         ),
       ],
       child: BlocBuilder<SelectedScreenCubit, int>(
@@ -33,12 +34,17 @@ class MyApp extends StatelessWidget {
                 home: BlocBuilder<ThemeStorageCubit, ThemeStorageState>(
                   builder: (context, state) {
                     bool isDark = false;
-                    if (state is ThemeStorageSuccess) {
-                      isDark = state.isDark ?? false;
+                    Color seedColor = roseColor;
+
+                    if (state is ThemeStorageSuccess && state.isDark != null) {
+                      isDark = state.isDark!;
+                    }
+                    if (state is ThemeStorageSuccess && state.seedColor != null) {
+                      seedColor = Color(state.seedColor!);
                     }
                     return DynamicTheme(
                       isDark: isDark,
-                      themeIndex: screenIndex,
+                      colorSeed: seedColor,
                       child: const Dashboard(),
                     );
                   },

@@ -9,11 +9,16 @@ class ThemeStorageCubit extends Cubit<ThemeStorageState> {
 
   final _storage = HiveStorageProvider();
 
-  void fetchThemeBrightness() async {
+  void fetchThemeData() async {
     emit(ThemeStorageLoading());
     try {
-      final response = await _storage.readIsDark();
-      emit(ThemeStorageSuccess(isDark: response));
+      final isDarkFuture = _storage.readIsDark();
+      final seedColorFuture = _storage.readSeedColor();
+
+      final isDark = await isDarkFuture;
+      final seedColor = await seedColorFuture;
+
+      emit(ThemeStorageSuccess(isDark: isDark, seedColor: seedColor));
     } catch (e) {
       emit(ThemeStorageFailure(error: e.toString()));
     }
@@ -23,8 +28,17 @@ class ThemeStorageCubit extends Cubit<ThemeStorageState> {
     emit(ThemeStorageLoading());
     try {
       await _storage.writeIsDark(isDark);
-      final response = await _storage.readIsDark();
-      emit(ThemeStorageSuccess(isDark: response));
+      fetchThemeData();
+    } catch (e) {
+      emit(ThemeStorageFailure(error: e.toString()));
+    }
+  }
+
+  void setThemeSeedColor(int seedColor) async {
+    emit(ThemeStorageLoading());
+    try {
+      await _storage.writeSeedColor(seedColor);
+      fetchThemeData();
     } catch (e) {
       emit(ThemeStorageFailure(error: e.toString()));
     }

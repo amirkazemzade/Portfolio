@@ -43,6 +43,7 @@ dependencies:
   hovering: ^1.0.4
   url_launcher: ^6.1.11
   hive: ^2.2.3
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
