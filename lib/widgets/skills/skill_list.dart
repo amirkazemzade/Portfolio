@@ -22,6 +22,10 @@ final _specialistSkills = [
     'images/200px/jetpack-compose-logo.png',
   ),
   const SkillModel(
+    'Material Design 3',
+    'images/200px/material-design-3-logo.png',
+  ),
+  const SkillModel(
     'Github',
     'images/200px/github-logo-black.png',
     'images/200px/github-logo-white.png',
@@ -42,14 +46,11 @@ final _averageSkills = [
     'images/200px/github-actions-logo.png',
   ),
   const SkillModel(
-    'Material Design 3',
-    'images/200px/material-design-logo.png',
-  ),
-  const SkillModel(
     'Agile Development',
     'images/200px/agile-logo.png',
   ),
 ];
+
 final _beginnerSkills = [
   const SkillModel(
     'KMM',
