@@ -14,7 +14,7 @@ class VerticalIntroductionBox extends StatelessWidget {
       children: [
         ProfileAvatar(),
         SizedBox(height: 16),
-        IntroductionText(fourLine: true),
+        IntroductionText(fiveLine: true),
       ],
     );
   }

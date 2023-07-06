@@ -21,7 +21,7 @@ class ContentUpLaptop extends StatelessWidget {
               const Expanded(child: ProfileAvatar()),
               const SizedBox(width: 32),
               const Expanded(
-                child: IntroductionText(fourLine: true),
+                child: IntroductionText(fiveLine: true),
               ),
               SizedBox(
                 height: 25.h,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/logic/theme_storage_cubit.dart';
-import 'package:portfolio/widgets/dashboard/app_color_picker.dart';
+import 'package:portfolio/widgets/dashboard/color_picker.dart';
 
 class ThemeSeedColorPicker extends StatelessWidget {
   const ThemeSeedColorPicker({
@@ -17,23 +15,14 @@ class ThemeSeedColorPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        showDialog(
-          context: context,
-          builder: (dialogContext) {
-            return AppColorPicker(
-              seedColor: seedColor,
-              isDark: isDark,
-              onColorChanged: (value) {
-                _setSeedColor(context, value);
-              },
-            );
-          },
+        showColorPicker(
+          context,
+          seedColor: seedColor,
+          isDark: isDark,
         );
       },
       icon: const Icon(Icons.color_lens),
     );
   }
-
-  void _setSeedColor(BuildContext context, Color selectedColor) =>
-      context.read<ThemeStorageCubit>().setThemeSeedColor(selectedColor.value);
 }
+
