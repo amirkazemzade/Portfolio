@@ -6,7 +6,7 @@ const _experiences = [
   ExperienceModel(
     companyName: 'Ryca',
     logoPath: 'images/200px/ryca-logo.jpg',
-    date: 'Apr 2022 - Present',
+    date: 'Apr 2022 - Oct 2023',
     jobTitle: 'Junior Mobile Developer',
     topSkills: ['Flutter', 'PWA', 'Android'],
   ),
